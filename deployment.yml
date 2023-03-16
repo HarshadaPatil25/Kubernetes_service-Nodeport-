@@ -1,0 +1,21 @@
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    dc: MUM
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      dc: MUM
+  template:
+    metadata:
+      name: mydpod
+      labels:
+        dc: MUM
+    spec:
+      containers:
+        - name: mydcont
+          image: harshada25/mywebsite-httpd
+          ports:
+           - containerPort: 80
